@@ -1,0 +1,25 @@
+to get the text from a button in a kv file and assign it to a variable in a .py file
+we can do the following:
+
+kv
+<MyLayout>:
+    BoxLayout:
+        orientation: 'vertical'
+
+        Button:
+            id: my_button  # Assign an ID to the Button
+            text: "Press me"
+            on_press: root.get_button_text()
+
+py
+class MyLayout(BoxLayout):
+    def get_button_text(self):
+        # Access the button using its ID and get its text
+        button_text = self.ids.my_button.text
+        print("Button text:", button_text)
+
+
+
+
+
+

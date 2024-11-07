@@ -1,0 +1,715 @@
+MainBox:
+    id: main_layout
+    orientation: "vertical"
+
+    TopBox:
+        size_hint: 1, .05
+
+    MiddleBox:  # It contains left and right boxes
+        LeftBox:
+            id: left_box  # Add an ID for the LeftBox
+            padding: ["2dp","2dp","1dp","2dp"] # left, top, right, bottom
+            orientation: "vertical"
+
+        RightBox:
+            padding: ["1dp","2dp","2dp","2dp"] # left, top, right, bottom
+            orientation: "vertical"
+
+    BottomBox:
+        size_hint: 1, .1
+        spacing: "2dp"
+
+<TopBox>:
+    # Top Box Background
+    canvas.before:
+        Color:
+            rgb: .2, .6, .2
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+    # Items inside the Top Box
+    Label:
+        text: "My Shop´s Name"
+
+    Label:
+        text: "Worker info"
+
+    Label:
+        text: "Date"
+
+    Label:
+        text: "Time"
+
+
+<LeftBox>:
+    padding: ["0dp","0dp","1dp", "0dp"]
+    size_hint: .5, 1
+
+    Label:
+        canvas.before:
+            Color:
+                rgb: 1, 1, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+
+        color: 1, 0, 0
+        text: root.info_from_numbers
+        halign: 'right'        # Horizontal alignment to the right
+        valign: 'bottom'       # Vertical alignment to the bottom
+        text_size: self.size
+        font_size: "30dp"
+        padding: ["10dp", "10dp"]
+
+    NumbersGrid:
+        size_hint: 1, .75
+
+    Label:
+        id: product_label
+        size_hint: 1, .25
+        canvas.before:
+            Color:
+                rgb: 1, 1, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+
+        color: 0, 0, 0
+        text: ""
+        halign: 'right'
+        valign: 'bottom'
+        text_size: self.size
+        font_size: "15dp"
+        padding: ["10dp", "10dp"]
+
+<NumbersGrid>:
+    cols: 5
+    padding: ["0dp","2dp","0dp", "1dp"]
+
+    # Each button call the pressing_buttons function and act as an instance of it
+    Button:
+        text: "Up"
+        on_press: root.up_button(self)
+    Button:
+        text: "7"
+        on_press: root.pressing_numbers(self)
+    Button:
+        text: "8"
+        on_press: root.pressing_numbers(self)
+    Button:
+        text: "9"
+        on_press: root.pressing_numbers(self)
+    Button:
+        text: "X"
+        on_press: root.x_button(self)
+    Button:
+        text: "Down"
+        on_press: root.down_button(self)
+    Button:
+        text: "4"
+        on_press: root.pressing_numbers(self)
+    Button:
+        text: "5"
+        on_press: root.pressing_numbers(self)
+    Button:
+        text: "6"
+        on_press: root.pressing_numbers(self)
+    Button:
+        text: "User"
+        on_press: root.user_button(self)
+    Button:
+        text: "Clr"
+        on_press: root.clr_button(self)
+    Button:
+        text: "1"
+        on_press: root.pressing_numbers(self)
+    Button:
+        text: "2"
+        on_press: root.pressing_numbers(self)
+    Button:
+        text: "3"
+        on_press: root.pressing_numbers(self)
+    Button:
+        text: "Order"
+        on_press: root.order_button(self)
+    Button:
+        text: "Esc"
+        on_press: root.esc_button(self)
+    Button:
+        text: "0"
+        on_press: root.pressing_numbers(self)
+    Button:
+        text: "00"
+        on_press: root.pressing_numbers(self)
+    Button:
+        text: "."
+        on_press: root.pressing_numbers(self)
+    Button:
+        text: "Enter"
+        on_press: root.enter_button(self)
+
+<RightBox>:
+    padding: ["1dp","2dp","0dp","0dp"]
+
+    ProductsGrid:
+
+    OptionsGrid:
+        size_hint: 1, .75
+
+    RightButtonsBox:
+        size_hint: 1, .15
+
+
+<ProductsGrid>:
+    cols: 6
+    padding: ["0dp","0dp","0dp","2dp"]
+    spacing: "2dp"
+
+    Button:
+        background_normal: ""
+        background_color: 0, 1, 0
+        color: 0, 0, 0
+        text: "Pt Guinness"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: 0, 1, 0
+        color: 0, 0, 0
+        text: "Pt Hop - House"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: 1, 1, 0
+        color: 0, 0, 0
+        text: "Btl Coors"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: 0, 0, .7
+        color: 0, 0, 0
+        text: "Vodka"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: 0, 0, .7
+        color: 0, 0, 0
+        text: "Southern comfort"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: 0, 0, 1
+        color: 0, 0, 0
+        text: "Splits"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: 0, 1, 0
+        color: 0, 0, 0
+        text: "Pt Smithicks"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: 0, 1, 0
+        color: 0, 0, 0
+        text: "Pt Rockshore"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: 1, 1, 0
+        color: 0, 0, 0
+        text: "Pt Btl Bulmers"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: 0, 0, .7
+        color: 0, 0, 0
+        text: "Gin"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: 0, 0, .7
+        color: 0, 0, 0
+        text: "Jager"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: 0, 0, 1
+        color: 0, 0, 0
+        text: "Babys"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: 0, 1, 0
+        color: 0, 0, 0
+        text: "Pt Heineken"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: 0, 1, 0
+        color: 0, 0, 0
+        text: "Pt O.Thieves Wild"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: 1, 1, 0
+        color: 0, 0, 0
+        text: "L/N Btl Bulmers"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: 0, 0, .7
+        color: 0, 0, 0
+        text: "Irish"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: 0, 0, .7
+        color: 0, 0, 0
+        text: "Cptn. Morgan"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: 0, 0, 1
+        color: 0, 0, 0
+        text: "White Lmd"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: 0, 1, 0
+        color: 0, 0, 0
+        text: "Pt Orchard Thieves"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: 0, 1, 0
+        color: 0, 0, 0
+        text: "Pt Bulmers"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: 1, 1, 0
+        color: 0, 0, 0
+        text: "Btl Desperados"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: 0, 0, .7
+        color: 0, 0, 0
+        text: "Bacardi"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: 0, 0, .7
+        color: 0, 0, 0
+        text: "Sambuca"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: 0, 0, 1
+        color: 0, 0, 0
+        text: "Coke"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: 0, 1, 0
+        color: 0, 0, 0
+        text: "Pt Calsberg"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: 0, 1, 0
+        color: 0, 0, 0
+        text: "Pt Lagunitas"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: 1, 1, 0
+        color: 0, 0, 0
+        text: "Ginger Ale"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: 0, 0, .7
+        color: 0, 0, 0
+        text: "Tequila"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: 0, 0, .7
+        color: 0, 0, 0
+        text: "Jack Daniels"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: 0, 0, 1
+        color: 0, 0, 0
+        text: "Sprite"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: 0, 1, 0
+        color: 0, 0, 0
+        text: "Pt Coors"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: 0, 1, 0
+        color: 0, 0, 0
+        text: "Btl Koperberg"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: 1, 1, 0
+        color: 0, 0, 0
+        text: "Double Vodka"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: 0, 0, .7
+        color: 0, 0, 0
+        text: "Jameson"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: 0, 0, .7
+        color: 0, 0, 0
+        text: "Tonic Wtr"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: 0, 0, 1
+        color: 0, 0, 0
+        text: "Dash"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: 0, 1, 0
+        color: 0, 0, 0
+        text: "Pt Moretti"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: 0, 1, 0
+        color: 0, 0, 0
+        text: "Btl Heineken"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: 1, 1, 0
+        color: 0, 0, 0
+        text: "Double Gin"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: .4, 0, .3
+        color: 0, 0, 0
+        text: "Cocktails"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: .4, 0, .3
+        color: 0, 0, 0
+        text: "Baby Guinness"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: 0, 0, 1
+        color: 0, 0, 0
+        text: "Juices"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: 0, 1, 0
+        color: 0, 0, 0
+        text: "1/2 Pt"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: 0, 1, 0
+        color: 0, 0, 0
+        text: "Btl Corona"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: 1, 1, 0
+        color: 0, 0, 0
+        text: "Double Jameson"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: .4, 0, .3
+        color: 0, 0, 0
+        text: "2 Vodka & Red Bull"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: .4, 0, .3
+        color: 0, 0, 0
+        text: "2 Jager & Red Bull"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+    Button:
+        background_normal: ""
+        background_color: 0, 0, 1
+        color: 0, 0, 0
+        text: "Red Bull"
+        halign: 'center'
+        valign: 'center'
+        text_size: self.size
+        on_press: root.pressing_product(self)
+
+<OptionsGrid>:
+    cols: 5
+    padding: ["0dp","0dp","0dp","2dp"]
+    spacing: "2dp"
+
+    Button:
+        text: "5"
+    Button:
+        text: "5"
+    Button:
+        text: "6"
+    Button:
+        text: "User"
+    Button:
+        text: "Clr"
+    Button:
+        text: "1"
+    Button:
+        text: "2"
+    Button:
+        text: "3"
+    Button:
+        text: "Order"
+    Button:
+        text: "Esc"
+    Button:
+        text: "0"
+    Button:
+        text: "00"
+    Button:
+        text: "."
+    Button:
+        text: "Enter"
+    Button:
+        text: "0"
+    Button:
+        text: "00"
+    Button:
+        text: "."
+    Button:
+        text: "Enter"
+    Button:
+        text: "0"
+    Button:
+        text: "00"
+    Button:
+        text: "."
+    Button:
+        text: "Enter"
+    Button:
+        text: "Enter"
+    Button:
+        text: "0"
+    Button:
+        text: "00"
+    Button:
+        text: "."
+    Button:
+        text: "Enter"
+    Button:
+        text: "00"
+    Button:
+        text: "."
+    Button:
+        text: "Enter"
+
+<RightButtonsBox>:
+    padding: ["0dp","0dp","0dp","2dp"]
+    spacing: "2dp"
+
+    Button:
+        text: "Cover"
+    Button:
+        text: "Table Map"
+    Button:
+        text: "Starter"
+    Button:
+        text: "Main"
+    Button:
+        text: "Spare"
+    Button:
+        text: "Card"
+    Button:
+        text: "Cash"
+
+
+<BottomBox>:
+    padding: ["2dp","0dp","2dp","2dp"]
+    Button:
+        text: "O/C Table"
+    Button:
+        text: "Payment"
+    Button:
+        text: "Print Bill"
+    Button:
+        text: "Functions"
+    Button:
+        text: "Manager"
+    Button:
+        text: "E/C"
+    Button:
+        text: "Void"
+    Button:
+        text: "Type Info"
+    Button:
+        text: "New Order"
+    Button:
+        text: "Review Orders"
+    Button:
+        text: "Change Info"
+    Button:
+        text: "No sale"
+
+
